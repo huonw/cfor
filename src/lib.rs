@@ -180,7 +180,8 @@ pub macro_rules! cfor {
     };
     // for ($init; ; ...) { ... }
     ($init: stmt; ; $($rest: tt)*) => {
-        cfor!($init; true; $($rest)*)
+        // avoid the `while true` lint
+        cfor!($init; !false; $($rest)*)
     };
 
     // for ($init; $cond; $step) { $body }
