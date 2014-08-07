@@ -156,6 +156,8 @@
 //!         println!("i = {}", i);
 //!         // try to skip just i == 4
 //!         if i == 4 {
+//!             // but this skips the i += 1 leaving us
+//!             // on i == 4 forever.
 //!             continue
 //!         }
 //!         // ...more code...
