@@ -20,6 +20,8 @@
 //! cannot unlike C. A `for` loop with no step is identical to a
 //! `while` loop.
 //!
+//! [*Source & issue tracker*](https://github.com/huonw/cfor/)
+//!
 //! # When should I use it?
 //!
 //! *Only* when `cfor!` is clearer than the more declarative built-in
@@ -168,7 +170,7 @@
 
 /// A C-style `for` loop in macro form.
 ///
-/// See crates docs for more information
+/// See crates docs for more information.
 #[macro_export]
 pub macro_rules! cfor {
     // for (; ...; ...) { ... }
