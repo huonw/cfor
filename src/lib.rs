@@ -103,13 +103,13 @@
 //! use std::rand;
 //!
 //! fn main() {
-//!     let mut x = 0u16;
+//!     let mut x = 1u16;
 //!
 //!     cfor!{; x < 0x1000; x *= 2 {
 //!         println!("power of 2: {}", x);
 //!
 //!         // sometimes quit early
-//!         if x < rand::random() { break }
+//!         if x > rand::random() { break }
 //!     }}
 //!
 //!     println!("actually stopped at {}", x);
