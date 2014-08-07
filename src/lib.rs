@@ -129,6 +129,10 @@
 //! ```rust
 //! #![feature(macro_rules)]
 //!
+//! # // avoid our crate being inserted automatically, which gets in
+//! # // the way of the feature above.
+//! # #![feature(phase)] #[phase(plugin)] extern crate cfor;
+//! #
 //! // WARNING: this is broken.
 //! macro_rules! bad_cfor {
 //!     ($init: stmt; $cond: expr; $step: expr $body: block) => {
