@@ -1,4 +1,9 @@
+env:
+  global:
+    - secure: Fda9cHPxM/nnoJ6vvobiAyqbVKZL9okeUrlQcy55KcPvNpGhRT1CW+eCa1LoHIKMVBkyi6/12hpXo/cp7F7gihwDUfgggQRhPJcapjHEIysZUGXJVM5ZMZP3nthxHEcCcF/hzmQ8Y/pNDTJcvKbDDvMrTBI1QSgnkp6+ihWbZeg=
 install:
   - curl http://www.rust-lang.org/rustup.sh | sudo sh -
 script:
-  - cargo build --verbose && cargo test --verbose && rustdoc --test src/lib.rs -L target && cargo doc --verbose
+  - cargo build --verbose && cargo test --verbose && rustdoc --test src/lib.rs -L target && cargo doc --verbose && mv target/doc doc
+after_script:
+  - curl http://www.rust-ci.org/artifacts/put?t=$RUSTCI_TOKEN | sh
