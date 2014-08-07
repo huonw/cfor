@@ -2,8 +2,7 @@
 
 //! A C-style `for` loop in macro form.
 //!
-//! This takes the form `cfor!(initialiser; condition; step {
-//! body })`.
+//! This takes the form `cfor!(initialiser; condition; step { body })`.
 //!
 //! - `initialiser` is a statement evaluated before any iterations of
 //!   the loop. Any variables declared here are scoped to the `cfor!`
