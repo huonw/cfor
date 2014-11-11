@@ -21,7 +21,7 @@ fn smoketest() {
 #[test]
 #[should_fail]
 fn continue_updates() {
-    cfor!(let i = 0u; i < 10; fail!() {
+    cfor!(let i = 0u; i < 10; panic!() {
         // we *should* hit the step expression.
         continue
     })
@@ -44,6 +44,6 @@ fn missing_parts() {
     assert!(inside);
 
     cfor!{; false; () {
-        fail!()
+        panic!()
     }}
 }

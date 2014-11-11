@@ -4,6 +4,6 @@ name = "cfor"
 version = "0.1.0"
 authors = ["Huon Wilson <dbau.pp@gmail.com>"]
 
-[[lib]]
+[lib]
 name = "cfor"
 plugin = true
