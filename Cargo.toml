@@ -1,8 +1,20 @@
 [package]
 
 name = "cfor"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Huon Wilson <dbau.pp@gmail.com>"]
+
+homepage = "https://github.com/huonw/cfor"
+repository = "https://github.com/huonw/cfor"
+documentation = "http://huonw.github.io/cfor/cfor/"
+license = "MIT/Apache-2.0"
+keywords = ["macro"]
+readme = "README.md"
+description = """
+A macro that gives Rust a C-style for loop, with initialisation,
+condition and step. This correctly handles control-flow like continue
+and break.
+"""
 
 [lib]
 name = "cfor"
