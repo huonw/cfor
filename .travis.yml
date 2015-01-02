@@ -1,9 +1,9 @@
 env:
   global:
-    - secure: HRAo3IZlc/R+hYYqBRec3ovLsL0iRpbr2eRE4oI3mZbjdFzdf8QfRw9dMPCq//gREAjWmySHhfjtcE/k5mVJk3URSTcjwfRp5YSVCAfF8Wxm9VimbF4qQUCzqGYIbBtTZRvI4BJIU9CqCcn/OYQaDGnpizIx0Kl2en2owRafXis=
+    - secure: "hvui3Tu9M/ZMvE1rDDaxCn0jVUthUZpTsRN/3+BwldK9Gj9a/2atSyqp9dk0aYzPZqaSbdbMW+Ud4LiMIVgllNR2bGfA7nq1P80S/V+Pq/GfBTU1Aq3h+KU2Xnt1/paJIucKw41eXTyBepuNUYlrwg340GiJx9Sfow0B7y/Zt7o="
 install:
   - curl https://static.rust-lang.org/rustup.sh | sudo sh -
 script:
-  - cargo build --verbose && cargo test --verbose && cargo doc --verbose && mv target/doc doc
-after_script:
-  - curl http://www.rust-ci.org/artifacts/put?t=$RUSTCI_TOKEN | sh
+  - cargo build --verbose && cargo test --verbose && cargo doc --verbose
+after_success:
+  - test "$TRAVIS_PULL_REQUEST" == false && test "$TRAVIS_BRANCH" == "master" && bash deploy-docs.sh
