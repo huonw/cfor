@@ -1,8 +1,8 @@
+language: rust
+sudo: false
 env:
   global:
     - secure: "hvui3Tu9M/ZMvE1rDDaxCn0jVUthUZpTsRN/3+BwldK9Gj9a/2atSyqp9dk0aYzPZqaSbdbMW+Ud4LiMIVgllNR2bGfA7nq1P80S/V+Pq/GfBTU1Aq3h+KU2Xnt1/paJIucKw41eXTyBepuNUYlrwg340GiJx9Sfow0B7y/Zt7o="
-install:
-  - curl https://static.rust-lang.org/rustup.sh | sudo sh -
 script:
   - cargo build --verbose && cargo test --verbose && cargo doc --verbose
 after_success:
