@@ -180,6 +180,11 @@ pub macro_rules! cfor {
         cfor!($init; !false; $($rest)*)
     };
 
+    // for ($init; $cond; ) { ... }
+    ($init: stmt; $cond: expr; ; $body: block) => {
+        cfor!{$init; $cond; (); $body}
+    };
+
     // for ($init; $cond; $step) { $body }
     ($init: stmt; $cond: expr; $step: expr; $body: block) => {
         {

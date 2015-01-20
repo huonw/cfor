@@ -41,7 +41,7 @@ fn missing_parts() {
     }}
     assert!(inside);
 
-    cfor!{; false; (); {
+    cfor!{; false; ; {
         panic!()
     }}
 }
