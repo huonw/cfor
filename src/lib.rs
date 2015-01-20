@@ -1,5 +1,3 @@
-#![feature(macro_rules)]
-
 //! A C-style `for` loop in macro form.
 //!
 //! This takes the form `cfor!(initialiser; condition; step { body })`.
@@ -55,11 +53,10 @@
 //! `std::iter`, but is straight-forward to handle directly.
 //!
 //! ```rust
-//! #![feature(phase)]
-//! #[phase(plugin)] extern crate cfor;
+//! #[macro_use] extern crate cfor;
 //!
 //! fn main() {
-//!     cfor!{let mut x = 1u; x < 0x1000; x *= 2 {
+//!     cfor!{let mut x = 1u; x < 0x1000; x *= 2; {
 //!         println!("power of 2: {}", x);
 //!     }}
 //! }
@@ -73,11 +70,10 @@
 //! the `cfor` header can be omitted.
 //!
 //! ```rust
-//! #![feature(phase)]
-//! #[phase(plugin)] extern crate cfor;
+//! #[macro_use] extern crate cfor;
 //!
 //! fn main() {
-//!     cfor!{let mut x = 1u; ; x *= 2 {
+//!     cfor!{let mut x = 1u; ; x *= 2; {
 //!         // ... setup ...
 //!         println!("handling power of 2: {}", x);
 //!
@@ -98,15 +94,14 @@
 //! initialisation expression can be safely omitted in this case.
 //!
 //! ```rust
-//! #![feature(phase)]
-//! #[phase(plugin)] extern crate cfor;
+//! #[macro_use] extern crate cfor;
 //!
 //! use std::rand;
 //!
 //! fn main() {
 //!     let mut x = 1u16;
 //!
-//!     cfor!{; x < 0x1000; x *= 2 {
+//!     cfor!{; x < 0x1000; x *= 2; {
 //!         println!("power of 2: {}", x);
 //!
 //!         // sometimes quit early
@@ -127,14 +122,12 @@
 //! infinite loops.
 //!
 //! ```rust
-//! #![feature(macro_rules)]
-//!
 //! # // avoid our crate being inserted automatically, which gets in
 //! # // the way of the feature above.
-//! # #![feature(phase)] #[phase(plugin)] extern crate cfor;
+//! # #[macro_use] extern crate cfor;
 //! // WARNING: this is broken.
 //! macro_rules! bad_cfor {
-//!     ($init: stmt; $cond: expr; $step: expr $body: block) => {
+//!     ($init: stmt; $cond: expr; $step: expr; $body: block) => {
 //!         {
 //!             $init;
 //!             while $cond {
@@ -149,7 +142,7 @@
 //! fn main() {
 //!     let mut true_counter = 0u;
 //!
-//!     bad_cfor!{let mut i = 0u; i < 10; i += 1 {
+//!     bad_cfor!{let mut i = 0u; i < 10; i += 1; {
 //!
 //!         // manually avoid the infinite loop
 //!         if true_counter >= 50 { break }
@@ -188,7 +181,7 @@ pub macro_rules! cfor {
     };
 
     // for ($init; $cond; $step) { $body }
-    ($init: stmt; $cond: expr; $step: expr $body: block) => {
+    ($init: stmt; $cond: expr; $step: expr; $body: block) => {
         {
             $init;
             while $cond {
