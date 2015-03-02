@@ -169,7 +169,7 @@
 ///
 /// See crates docs for more information.
 #[macro_export]
-pub macro_rules! cfor {
+macro_rules! cfor {
     // for (; ...; ...) { ... }
     (; $($rest: tt)*) => {
         cfor!((); $($rest)*)
