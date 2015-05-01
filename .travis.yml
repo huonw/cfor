@@ -1,11 +1,22 @@
 language: rust
-sudo: false
+rust:
+  - nightly
+  - beta
+sudo: required
+
+before_script:
+  - pip install 'travis-cargo<0.2' --user && export PATH=$HOME/.local/bin:$PATH
+script:
+  - |
+      travis-cargo build &&
+      travis-cargo test &&
+      travis-cargo bench &&
+      travis-cargo doc
+after_success:
+  - travis-cargo --only beta doc-upload
+  - travis-cargo coveralls
 env:
   global:
     - secure: "hvui3Tu9M/ZMvE1rDDaxCn0jVUthUZpTsRN/3+BwldK9Gj9a/2atSyqp9dk0aYzPZqaSbdbMW+Ud4LiMIVgllNR2bGfA7nq1P80S/V+Pq/GfBTU1Aq3h+KU2Xnt1/paJIucKw41eXTyBepuNUYlrwg340GiJx9Sfow0B7y/Zt7o="
-script:
-  - cargo build --verbose && cargo test --verbose && cargo doc --verbose
-after_success:
-  - test "$TRAVIS_PULL_REQUEST" == false && test "$TRAVIS_BRANCH" == "master" && bash deploy-docs.sh
 notifications:
     webhooks: http://huon.me:54856/travis
