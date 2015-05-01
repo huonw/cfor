@@ -18,4 +18,6 @@ and break.
 
 [lib]
 name = "cfor"
-plugin = true
+
+[features]
+unstable = []
