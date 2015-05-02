@@ -17,7 +17,7 @@ fn smoketest() {
 }
 
 #[test]
-#[should_fail]
+#[should_panic]
 fn continue_updates() {
     cfor!(let i = 0; i < 10; panic!(); {
         // we *should* hit the step expression.

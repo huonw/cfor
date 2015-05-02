@@ -56,7 +56,7 @@
 //! #[macro_use] extern crate cfor;
 //!
 //! fn main() {
-//!     cfor!{let mut x = 1u; x < 0x1000; x *= 2; {
+//!     cfor!{let mut x = 1; x < 0x1000; x *= 2; {
 //!         println!("power of 2: {}", x);
 //!     }}
 //! }
@@ -73,7 +73,7 @@
 //! #[macro_use] extern crate cfor;
 //!
 //! fn main() {
-//!     cfor!{let mut x = 1u; ; x *= 2; {
+//!     cfor!{let mut x = 1; ; x *= 2; {
 //!         // ... setup ...
 //!         println!("handling power of 2: {}", x);
 //!
@@ -96,7 +96,7 @@
 //! ```rust
 //! #[macro_use] extern crate cfor;
 //!
-//! use std::rand;
+//! extern crate rand;
 //!
 //! fn main() {
 //!     let mut x = 1u16;
@@ -140,9 +140,9 @@
 //! }
 //!
 //! fn main() {
-//!     let mut true_counter = 0u;
+//!     let mut true_counter = 0;
 //!
-//!     bad_cfor!{let mut i = 0u; i < 10; i += 1; {
+//!     bad_cfor!{let mut i = 0; i < 10; i += 1; {
 //!
 //!         // manually avoid the infinite loop
 //!         if true_counter >= 50 { break }

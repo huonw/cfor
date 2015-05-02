@@ -19,5 +19,8 @@ and break.
 [lib]
 name = "cfor"
 
+[dev-dependencies]
+rand = "0.3"
+
 [features]
 unstable = []
