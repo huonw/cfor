@@ -42,7 +42,7 @@
 //!
 //! ```toml
 //! [dependencies.cfor]
-//! git = "https://github.com/huonw/cfor"
+//! cfor = "1.0"
 //! ```
 //!
 //! # Examples
