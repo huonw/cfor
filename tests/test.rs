@@ -45,3 +45,21 @@ fn missing_parts() {
         panic!()
     }}
 }
+
+#[test]
+fn multi_dec() {
+    cfor!(let x = true, let y = x, let z = false; false;; {
+        assert!(x);
+        assert_eq!(x, y);
+        assert!(!z);
+    });
+}
+
+#[test]
+fn multi_step() {
+    let mut x = 0;
+    let mut y = 0;
+    cfor!(; x < 10 && y < 100; x += 1, y += 10; {});
+    assert_eq!(x, 10);
+    assert_eq!(y, 100);
+}
