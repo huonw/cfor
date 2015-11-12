@@ -168,10 +168,15 @@
 //!
 //! Like C loops, `cfor!` supports specfying multiple initializations and steps seperated by a comma.
 //!
+//! ```rust
+//! #[macro_use] extern crate cfor;
+//!
+//! fn main() {
+//!     cfor!{let mut x = 0, let mut y = x; x <= 10 && y <= 100; x += 1, y += 10; {
+//!         println!(x: {}, y: {}", x, y);
+//!     }}
+//! }
 //! ```
-//!cfor!(let mut x = 0, let mut y = x; x <= 10 && y <= 100; x+= 1, y += 10; {
-//!    println!("{}:{}", x, y);
-//!});
 
 
 /// A C-style `for` loop in macro form.
