@@ -163,6 +163,15 @@
 //! This is invoked in the same manner as `cfor!`, but, if `$body`
 //! contains a `continue`, the `$step` at the end of the loop body
 //! will never be evaluated.
+//! 
+//! # Handling multiple initializations and steps
+//!
+//! Like C loops, `cfor!` supports specfying multiple initializations and steps seperated by a comma.
+//!
+//! ```
+//!cfor!(let mut x = 0, let mut y = x; x <= 10 && y <= 100; x+= 1, y += 10; {
+//!    println!("{}:{}", x, y);
+//!});
 
 
 /// A C-style `for` loop in macro form.
@@ -175,20 +184,20 @@ macro_rules! cfor {
         cfor!((); $($rest)*)
     };
     // for ($init; ; ...) { ... }
-    ($init: stmt; ; $($rest: tt)*) => {
+    ($($init: stmt),+; ; $($rest: tt)*) => {
         // avoid the `while true` lint
-        cfor!($init; !false; $($rest)*)
+        cfor!($($init),+; !false; $($rest)*)
     };
 
     // for ($init; $cond; ) { ... }
-    ($init: stmt; $cond: expr; ; $body: block) => {
-        cfor!{$init; $cond; (); $body}
+    ($($init: stmt),+; $cond: expr; ; $body: block) => {
+        cfor!{$($init),+; $cond; (); $body}
     };
 
     // for ($init; $cond; $step) { $body }
-    ($init: stmt; $cond: expr; $step: expr; $body: block) => {
+    ($($init: stmt),+; $cond: expr; $($step: expr),+; $body: block) => {
         {
-            $init;
+            $($init;)+
             while $cond {
                 let mut _first = true;
                 let mut _continue = false;
@@ -215,7 +224,7 @@ macro_rules! cfor {
                     break
                 }
 
-                $step
+                $($step;)+
             }
         }
     };
