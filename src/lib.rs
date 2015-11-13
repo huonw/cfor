@@ -173,7 +173,7 @@
 //!
 //! fn main() {
 //!     cfor!{let mut x = 0, let mut y = x; x <= 10 && y <= 100; x += 1, y += 10; {
-//!         println!(x: {}, y: {}", x, y);
+//!         println!("x: {}, y: {}", x, y);
 //!     }}
 //! }
 //! ```
