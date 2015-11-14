@@ -1,7 +1,7 @@
 [package]
 
 name = "cfor"
-version = "1.0.0"
+version = "1.1.0"
 authors = ["Huon Wilson <dbau.pp@gmail.com>"]
 
 homepage = "https://github.com/huonw/cfor"
@@ -15,9 +15,6 @@ A macro that gives Rust a C-style for loop, with initialisation,
 condition and step. This correctly handles control-flow like continue
 and break.
 """
-
-[lib]
-name = "cfor"
 
 [dev-dependencies]
 rand = "0.3"
