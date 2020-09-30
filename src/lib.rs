@@ -6,8 +6,8 @@
 //!   the loop. Any variables declared here are scoped to the `cfor!`
 //!   invocation, that is, only usable inside `condition`, `step` and
 //!   `body`.
-//! - `condition` is an boolean expression evaluated at the start of
-//!   each iteration. If it evaluates to `false` iteration will stop.
+//! - `condition` is an boolean expression evaluated at the starting of
+//!   each iteration. If it evaluates to `false` iteration will stop & come out of loop.
 //! - `step` is an arbitrary expression which is executed at the end
 //!   of each iteration (including if `continue` is called), before
 //!   `condition` is checked.
